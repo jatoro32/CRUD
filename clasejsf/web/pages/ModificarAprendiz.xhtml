@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templete/Templete.xhtml">
+
+            <ui:define name="content">
+                 <p:messages id="mensaje" autoUpdate="false"/>
+
+                    <h:form>
+                        <h2><center><h:outputText value="Crear Aprendiz"/></center></h2>
+                        <br/>
+                        <center> <p:outputLabel value="Documento:" for="Documento" /></center>
+                        <center>  <p:inputText id="Documento" value="#{aprendizController.apre.documento}" title="#{aprendizController.apre.documento}" required="true" requiredMessage="Campo Documento Obligatorio."/></center>
+                            <p:message for="Documento"/>
+                            <center><p:outputLabel value="primernombre:" for="primernombre" /></center>
+                            <center><p:inputText id="primernombre" value="#{aprendizController.apre.primernombre}" title="#{aprendizController.apre.primernombre}" required="true" requiredMessage="Campo Primer Nombre Obligatorio."/></center>
+                            <p:message for="primernombre"/>
+                            <center><p:outputLabel value="Segundonombre:" for="segundonombre" /></center>
+                            <center><p:inputText id="segundonombre" value="#{aprendizController.apre.segundonombre}" title="#{aprendizController.apre.segundonombre}" /></center>
+                             <p:message for="segundonombre"/>
+                            <center><p:outputLabel value="Primerapellido:" for="primerapellido" /></center>
+                            <center><p:inputText id="primerapellido" value="#{aprendizController.apre.primerapellido}" title="#{aprendizController.apre.primerapellido}" required="true" requiredMessage="Campo Primer Apellido Obligatorio."/></center>
+                             <p:message for="primerapellido"/>
+                            <center><p:outputLabel value="Segundoapellido:" for="segundoapellido" /></center>
+                            <center><p:inputText id="segundoapellido" value="#{aprendizController.apre.segundoapellido}" title="#{aprendizController.apre.segundoapellido}" /></center>
+                           <center> <p:outputLabel value="Programa:" for="programa" /></center>
+                           <center><p:inputText id="programa" value="#{aprendizController.apre.programa}" title="#{aprendizController.apre.programa}" required="true" requiredMessage="Programa de Formacion Obligatorio."/></center>
+                              <p:message for="programa"/>
+                            <center><p:outputLabel value="Ficha:" for="ficha" /></center>
+                            <center><p:inputText id="ficha" value="#{aprendizController.apre.ficha}" title="#{aprendizController.apre.ficha}" required="true" requiredMessage="Campo Ficha Obligatorio."/></center>
+                          <p:message for="ficha"/>
+                            <center> <p:outputLabel value="Correopersonal:" for="correopersonal" /></center>
+                            <center> <p:inputText id="correopersonal" value="#{aprendizController.apre.correopersonal}" title="#{aprendizController.apre.correopersonal}" required="true" requiredMessage="Campo de Correo Personal Obligatorio."/></center>
+                                             <p:message for="correopersonal"/>         
+                           <center><p:outputLabel value="Correomisena:" for="correomisena" /></center>
+                           <center><p:inputText id="correomisena" value="#{aprendizController.apre.correomisena}" title="#{aprendizController.apre.correomisena}" required="true" requiredMessage="Campo Correo Misena Obligatorio."/></center>
+                           <p:message for="correomisena"/>         
+                            <center><p:outputLabel value="Numerocontacto:" for="numerocontacto" /></center>
+                            <center><p:inputText id="numerocontacto" value="#{aprendizController.apre.numerocontacto}" title="#{aprendizController.apre.numerocontacto}" required="true" requiredMessage="Campo numero de contacto obligatorio."/></center>
+                              <p:message for="numerocontacto"/>      
+                              <br/>
+                         <center> <p:commandButton id="ModificarAprendiz" value="Modificar"
+                                                      icon="ui-icon-plusthick"  
+                                                      actionListener="#{aprendizController.modificar()}"/></center><br/>
+                            <center> <p:commandButton id="registroCommand" icon="ui-icon-plusthick" value="Ver Lista"  action="listarAprendices.xhtml?faces-redirect=true"/></center>
+
+
+                    </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

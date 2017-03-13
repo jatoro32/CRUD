@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templete/Templete.xhtml">
+
+            <ui:define name="content">
+                <br/> <br/>
+
+                <h:form id="frmPrincipal">        
+
+                    <h:messages errorClass="error" showDetail="true"
+                                showSummary="true" warnStyle="color: blue"
+                                infoStyle="color: green" errorStyle="color: red"/>
+                    <center> <p:commandButton id="registroCommand" value="Crear Nuevo Aprendiz" action="RegistrarAprendices.xhtml?faces-redirect=true" styleClass="ui-confirmdialog-no" icon="ui-icon-person"/></center>
+                    <br/><br/>  
+                    
+                    <p:panel header="Exportar" >
+                        <h:commandLink>
+                            <p:graphicImage value="../resources/img/excel-xls-icon.png" alt="Descargar en excel" width="44"/>
+                            <p:dataExporter type="xls" target="tbl" fileName="Aprendices" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage value="../resources/img/pdf.png" alt="Descargar en PDF" width="44"/>
+                            <p:dataExporter type="pdf" target="tbl" fileName="Aprendices" />
+                        </h:commandLink>
+                    </p:panel>
+
+
+                    <p:dataTable  id="tbl" var="persona" value="#{aprendizController.usuarios}" emptyMessage="No se encontraron registros"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 paginator="true" rows="5" style="margin-bottom:20px">
+
+                        <p:column headerText="Documento" id="txtid" filterBy="#{persona.documento}fi" filterMatchMode="contains">
+                            <h:outputText value="#{persona.documento}" />
+                        </p:column>
+
+                        <p:column  headerText="Primer Nombre" id="txtprimernombre">
+                            <h:outputText value="#{persona.primernombre}" />
+                        </p:column>
+
+                        <p:column  headerText="Segundo Nombre" id="txtsegundonombre">
+                            <h:outputText value="#{persona.segundonombre}" />
+                        </p:column>
+
+                        <p:column  headerText="Primer Apellido" id="txtprimerapellido">
+                            <h:outputText value="#{persona.primerapellido}" />
+                        </p:column>
+
+
+                        <p:column  headerText="Segundo Apellido" id="txtsegundoapellido">
+                            <h:outputText value="#{persona.segundoapellido}" />
+                        </p:column>
+
+                        <p:column  headerText="Programa de Formacion" id="txtprograma">
+                            <h:outputText value="#{persona.programa}" />
+                        </p:column>
+
+                        <p:column  headerText="Ficha" id="txtficha">
+                            <h:outputText value="#{persona.ficha}" />
+                        </p:column>
+
+                        <p:column  headerText="Correo Personal" id="txtcp">
+                            <h:outputText value="#{persona.correopersonal}" />
+                        </p:column>
+
+                        <p:column  headerText="Correo Misena" id="txtcm">
+                            <h:outputText value="#{persona.correomisena}" />
+                        </p:column>
+
+                        <p:column  headerText="Telefono" id="txttelefono">
+                            <h:outputText value="#{persona.numerocontacto}" />
+                        </p:column>
+
+
+                        <p:column headerText="Acción" exportable="false" width="16%" >
+                            <p:commandButton  value=" Editar"   styleClass="ui-confirmdialog-no" icon=" ui-icon-pencil"  action="ModificarAprendiz.xhtml?faces-redirect=true" oncomplete="PF('wdialogo').show();" update="tbl"  actionListener="#{aprendizController.modificar()}" />
+                            <p:commandButton value="Borrar" styleClass="ui-confirmdialog-no" icon="ui-icon-trash" action="#{aprendizController.eliminarUsuario(persona)}"   update="tbl" >                                     
+                        <p:confirm header="Confirmación" message="¿Seguro que desea eliminar el usuario?" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
